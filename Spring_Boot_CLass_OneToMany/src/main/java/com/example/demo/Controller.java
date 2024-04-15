@@ -23,13 +23,13 @@ public class Controller {
 	@Autowired
 	private AuthorService authorService;
 	
-	@GetMapping("/book")
-	public Page<Book> getAllBook(@RequestBody Integer pageNumber,@RequestBody Integer pageSize,@RequestParam(defaultValue = "id") String sortBy){
+	@GetMapping("/book/{pageNumber}/{pageSize}")
+	public Page<Book> getAllBook(@PathVariable Integer pageNumber,@PathVariable Integer pageSize,@RequestParam(defaultValue = "id") String sortBy){
 		return bookRepo.getAllBook(pageNumber, pageSize, sortBy);
 	}
 	
-	@GetMapping("/author")
-	public Page<Author> getAllauthor(@RequestBody Integer pageNumber,@RequestBody Integer pageSize,@RequestParam(defaultValue = "id") String sortBy){
+	@GetMapping("/author/{pageNumber}/{pageSize}")
+	public Page<Author> getAllauthor(@PathVariable Integer pageNumber,@PathVariable Integer pageSize,@RequestParam(defaultValue = "id") String sortBy){
 		return authorService.getAllBook(pageNumber, pageSize, sortBy);
 	}
 	
